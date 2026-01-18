@@ -2,12 +2,10 @@ import { useState, useCallback } from 'react';
 import ParticipantInput from '../components/ParticipantInput';
 import ParticipantTable from '../components/ParticipantTable';
 import AlgorithmPicker from '../components/AlgorithmPicker';
-import TemplateManager from '../components/TemplateManager';
 import WineSelector from '../components/WineSelector';
 import ConfirmModal from '../components/ConfirmModal';
 import WinnerReveal from '../components/WinnerReveal';
 import { drawsApi } from '../api/client';
-import { useTemplates } from '../hooks/useTemplates';
 import { useToastContext } from '../App';
 import type { Participant, AlgorithmKey, Draw, WineListItem } from '../types';
 
@@ -24,7 +22,6 @@ function NewDraw() {
   const [completedDraw, setCompletedDraw] = useState<Draw | null>(null);
   const [previewWinner, setPreviewWinner] = useState<string | null>(null);
 
-  const { templates, addTemplate, deleteTemplate } = useTemplates();
   const toast = useToastContext();
 
   const handleParticipantsLoaded = useCallback((loaded: Omit<Participant, 'id' | 'is_winner'>[]) => {
@@ -185,18 +182,9 @@ function NewDraw() {
         {/* Left column - Participants */}
         <div className="space-y-6">
           <div className="card p-6">
-            <div className="flex items-center justify-between mb-6">
-              <h2 className="text-xl font-semibold text-apple-black dark:text-white">
-                Deltakere
-              </h2>
-              <TemplateManager
-                templates={templates}
-                currentParticipants={participants}
-                onLoad={setParticipants}
-                onSave={addTemplate}
-                onDelete={deleteTemplate}
-              />
-            </div>
+            <h2 className="text-xl font-semibold text-apple-black dark:text-white mb-6">
+              Deltakere
+            </h2>
             <ParticipantInput onParticipantsLoaded={handleParticipantsLoaded} />
           </div>
 
