@@ -319,9 +319,3 @@ $env:VINMONOPOLET_API_KEY="your-api-key-here"
 Then restart the application. The "Søk i Vinmonopolet" button in the Wine Cellar will now search Vinmonopolet's catalog.
 
 > **Note:** Without an API key, the wine search feature will show an error message. You can still add wines manually.
-
----
-
-## 📄 License
-
-Internal use only - Eplehuset

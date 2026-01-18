@@ -350,15 +350,6 @@ function WinnerReveal({
                   Fortsett
                 </motion.button>
               )}
-
-              {/* Spinning indicator */}
-              {!isRevealed && (
-                <motion.div
-                  animate={{ rotate: 360 }}
-                  transition={{ duration: 2, repeat: Infinity, ease: 'linear' }}
-                  className="w-8 h-8 mx-auto border-2 border-white/20 border-t-white/60 rounded-full"
-                />
-              )}
             </motion.div>
           </div>
         </motion.div>
