@@ -1,0 +1,17 @@
+services:
+  vinlotteri:
+    build: .
+    ports:
+      - "8085:8000"
+    volumes:
+      - vinlotteri-data:/data
+    environment:
+      - DJANGO_SECRET_KEY=${DJANGO_SECRET_KEY:-change-me-in-production}
+      - DJANGO_ALLOWED_HOSTS=localhost,127.0.0.1
+      - DJANGO_DEBUG=False
+      - DATABASE_PATH=/data/db.sqlite3
+      - VINMONOPOLET_API_KEY=${VINMONOPOLET_API_KEY:-}
+    restart: unless-stopped
+
+volumes:
+  vinlotteri-data:
